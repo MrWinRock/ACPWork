@@ -5,14 +5,14 @@ import java.awt.event.*;
 public class Main extends JFrame implements ActionListener {
 
    JButton okBtn, submitBtn, cancelBtn;
-   String message;
+   String text;
 
    public Main() {
       // Create buttons
       okBtn = new JButton("OK");
       submitBtn = new JButton("Submit");
       cancelBtn = new JButton("Cancel");
-      message = "";
+      text = "";
 
       setTitle("Event Listener");
       setSize(600, 600);
@@ -45,7 +45,7 @@ public class Main extends JFrame implements ActionListener {
       
       g.setFont(f);
       g.drawString("Control in Action: Button", 200, 120);
-      g.drawString(message, 210, 400);
+      g.drawString(text, 210, 400);
    }
 
    // Event listener for buttons
@@ -53,15 +53,15 @@ public class Main extends JFrame implements ActionListener {
    public void actionPerformed(ActionEvent e) {
       
       if(e.getSource() == okBtn) {
-         message = "OK Button Clicked";
+         text = "OK Button Clicked";
          repaint();
       }
       else if(e.getSource() == submitBtn) {
-         message = "Submit Button Clicked";
+         text = "Submit Button Clicked";
          repaint();
       }
       else if(e.getSource() == cancelBtn) {
-         message = "Cancel Button Clicked";
+         text = "Cancel Button Clicked";
          repaint();
       }
    }
