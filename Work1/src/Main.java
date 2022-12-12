@@ -1,76 +1,73 @@
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
+import java.awt.event.*;
 
 public class Main extends JFrame implements ActionListener {
 
-   JButton btn1, btn2, btn3;
-   String topMessage, messageEvent;
+   JButton okBtn, submitBtn, cancelBtn;
+   String message;
 
    public Main() {
+      // Create buttons
+      okBtn = new JButton("OK");
+      submitBtn = new JButton("Submit");
+      cancelBtn = new JButton("Cancel");
+      message = "";
 
       setTitle("Event Listener");
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      setSize(600, 600);
       setLayout(null);
-      setBounds(0, 0, 600, 600);
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setVisible(true);
-      
+
+      // Create JPanel
       JPanel buttonPanel = new JPanel();
-      buttonPanel.setBackground(Color.red);
-      buttonPanel.setBounds(95, 200, 390, 60);
+      buttonPanel.setBounds(180, 220, 230, 60);
+      
+      // Add button to JPanel
+      buttonPanel.add(okBtn);
+      buttonPanel.add(submitBtn);
+      buttonPanel.add(cancelBtn);
+      
+      // Event listener
+      okBtn.addActionListener(this);
+      submitBtn.addActionListener(this);
+      cancelBtn.addActionListener(this);
+      
       add(buttonPanel);
-
-      // Build Buttons
-      btn1 = new JButton("OK");
-      btn2 = new JButton("Submit");
-      btn3 = new JButton("Cancel");
-
-      // Set Buttons' Bounds
-      btn1.setBounds(100, 200, 100, 50);
-      btn2.setBounds(210, 200, 130, 50);
-      btn3.setBounds(350, 200, 130, 50);
-
-      // Add Event Listener
-      btn1.addActionListener(this);
-      btn2.addActionListener(this);
-      btn3.addActionListener(this);
-
-      // Add Buttons to Panel
-      buttonPanel.add(btn1);
-      buttonPanel.add(btn2);
-      buttonPanel.add(btn3);
-
-      // Bottom Label
-      messageEvent = "";
       
    }
 
-   // Make Labels
+   // 
    public void paint(Graphics g) {
-      Font f = new Font("Arial", Font.BOLD, 16);
+      super.paint(g);
+      Font f = new Font("Arial", Font.BOLD, 18);
+      
       g.setFont(f);
-      g.drawString("Control in Action: Button", 200, 100);
-      g.drawString(messageEvent, 220, 400);
+      g.drawString("Control in Action: Button", 200, 120);
+      g.drawString(message, 210, 400);
    }
-   
+
+   // Event listener for buttons
    @Override
    public void actionPerformed(ActionEvent e) {
-      if(e.getSource() == btn1) {
-         messageEvent = "OK Button Clicked";
+      
+      if(e.getSource() == okBtn) {
+         message = "OK Button Clicked";
          repaint();
       }
-      else if(e.getSource() == btn2) {
-         messageEvent = "Submit Button Clicked";
+      else if(e.getSource() == submitBtn) {
+         message = "Submit Button Clicked";
          repaint();
       }
-      else if(e.getSource() == btn3) {
-         messageEvent = "Cancel Button Clicked";
+      else if(e.getSource() == cancelBtn) {
+         message = "Cancel Button Clicked";
          repaint();
       }
    }
-   
+
    public static void main(String[] args) {
+      
       new Main();
    }
 }
-
