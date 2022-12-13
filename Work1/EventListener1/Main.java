@@ -38,7 +38,6 @@ public class Main extends JFrame implements ActionListener {
       
    }
 
-   // 
    public void paint(Graphics g) {
       super.paint(g);
       Font f = new Font("Arial", Font.BOLD, 18);
@@ -46,7 +45,7 @@ public class Main extends JFrame implements ActionListener {
       g.setFont(f);
       g.drawString("Control in Action: Button", 200, 120);
       g.drawString(text, 210, 400);
-   }
+   }       
 
    // Event listener for buttons
    @Override
